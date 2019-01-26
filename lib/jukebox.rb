@@ -31,10 +31,10 @@ def play(title)
   input = gets.chomp
   valid = false
   title.each_with_index do |song, index|
-    if (choice.to_i - 1 == index)
+    if (input.to_i - 1 == index)
       puts "Playing #{title[index]}"
       valid = true
-    elsif (choice == song)
+    elsif (input == song)
       puts "Playing #{input}"
       valid = true
     end
