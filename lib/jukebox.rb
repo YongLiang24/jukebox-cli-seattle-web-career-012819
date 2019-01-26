@@ -45,20 +45,27 @@ def exit_jukebox
 end
 
 #play method, type exit to stop the program
-def run(title)
+def run(songs)
   help
-  loop do
-    puts "Please enter a command:"
-    input = gets.chomp
-    case input
-    when 'play'
-      play(title)
-    when 'help'
-      help
-    when 'list'
-      list(title)
-    when 'exit'
-      break
+  puts "Please enter a command:"
+  user_response = gets.chomp
+  while user_response != "exit"
+    case user_response
+      when "help"
+        help
+        puts "Please enter a command:"
+        user_response = gets.chomp
+      when "list"
+        list(songs)
+        puts "Please enter a command:"
+        user_response = gets.chomp
+      when "play"
+        play(songs)
+        puts "Please enter a command:"
+        user_response = gets.chomp
+      else
+        puts "Invalid input, please try again"
+        user_response = gets.chomp
     end
   end
   exit_jukebox
