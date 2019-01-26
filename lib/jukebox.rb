@@ -20,24 +20,29 @@ end
 
 #list method
 def list(title)
-  songs.each_with_index{|song, index| puts "#{index + 1}. #{title}"}
+  songs.each_with_index { |song, index|
+    puts (index + 1).to_s + ". " + song
+    }
 end
 
 #the play method
 def play(title)
   puts "Please enter a song name or number:"
-  choice = gets.chomp
-  valid = false
-  songs.each_with_index do |song, index|
-    if (choice.to_i - 1 == index)
-      puts "Playing #{title[index]}"
-      valid = true
-    elsif (choice == title)
-      puts "Playing #{choice}"
-      valid = true
+  user_response = gets.chomp
+  output = ""
+  songs.each_with_index { |song, index|
+    if user_response == (index + 1).to_s || user_response == song
+      output = "Playing #{song}"
     end
+  }
+  if output.include?("Playing")
+    puts output
+  elsif user_response == "list"
+    list(songs)
+    play(songs)
+  else
+    puts "Invalid input, please try again"
   end
-  puts "Invalid input, please try again" if valid == false
 end
 #exit method
 def exit_jukebox
