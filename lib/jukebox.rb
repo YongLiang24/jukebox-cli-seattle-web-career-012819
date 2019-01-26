@@ -43,3 +43,23 @@ end
 def exit_jukebox
   puts "Goodbye"
 end
+
+#play method, type exit to stop the program
+def run(title)
+  help
+  loop do
+    puts "Please enter a command:"
+    input = gets.chomp
+    case input
+    when 'play'
+      play(title)
+    when 'help'
+      help
+    when 'list'
+      list(title)
+    when 'exit'
+      break
+    end
+  end
+  exit_jukebox
+end
