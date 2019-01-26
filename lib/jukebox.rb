@@ -19,23 +19,27 @@ def help
 end
 
 #list method
-def list(songs)
-  songs.each_with_index{|song, index| puts "#{index + 1}. #{song}"}
+def list(title)
+  songs.each_with_index{|song, index| puts "#{index + 1}. #{title}"}
 end
 
 #the play method
-def play(songs)
+def play(title)
   puts "Please enter a song name or number:"
   choice = gets.chomp
   valid = false
   songs.each_with_index do |song, index|
     if (choice.to_i - 1 == index)
-      puts "Playing #{songs[index]}"
+      puts "Playing #{title[index]}"
       valid = true
-    elsif (choice == song)
+    elsif (choice == title)
       puts "Playing #{choice}"
       valid = true
     end
   end
   puts "Invalid input, please try again" if valid == false
+end
+#exit method
+def exit_jukebox
+  puts "Goodbye"
 end
