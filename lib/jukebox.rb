@@ -26,7 +26,7 @@ def list(title)
 end
 
 #the play method
-def play(title)
+def play(songs)
   puts "Please enter a song name or number:"
   choice = gets.chomp
   valid = false
