@@ -42,9 +42,9 @@ def play(my_songs)
   #get the file path of the song by looking it up in the my_songs hash
   puts "Please enter a song name:"
   user_response = gets.chomp
-  my_songs.each { |song, location|
+  my_songs.each { |song, directory|
     if user_response == song
-      system 'open ' + location
+      system 'open ' + directory
     end
       }
   if user_response == "list"
@@ -58,6 +58,7 @@ end
 
 def exit_jukebox
   #this method is the same as in jukebox.rb
+   puts "Goodbye"
 end
 
 def run(my_songs)
