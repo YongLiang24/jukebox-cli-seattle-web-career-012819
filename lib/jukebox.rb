@@ -19,23 +19,23 @@ def help
 end
 
 #list method
-def list(songs)
-  songs.each_with_index { |song, index|
+def list(title)
+  title.each_with_index { |song, index|
     puts (index + 1).to_s + ". " + song
     }
 end
 
 #the play method
-def play(songs)
+def play(title)
   puts "Please enter a song name or number:"
-  choice = gets.chomp
+  input = gets.chomp
   valid = false
-  songs.each_with_index do |song, index|
+  title.each_with_index do |song, index|
     if (choice.to_i - 1 == index)
-      puts "Playing #{songs[index]}"
+      puts "Playing #{title[index]}"
       valid = true
     elsif (choice == song)
-      puts "Playing #{choice}"
+      puts "Playing #{input}"
       valid = true
     end
   end
@@ -47,18 +47,18 @@ def exit_jukebox
 end
 
 #play method, type exit to stop the program
-def run(songs)
+def run(title)
   help
   loop do
     puts "Please enter a command:"
     input = gets.chomp
     case input
     when 'play'
-      play(songs)
+      play(title)
     when 'help'
       help
     when 'list'
-      list(songs)
+      list(title)
     when 'exit'
       break
     end
